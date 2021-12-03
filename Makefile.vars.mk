@@ -34,7 +34,7 @@ BATS_FILES ?= .
 KUSTOMIZE ?= go run sigs.k8s.io/kustomize/kustomize/v4
 
 # Image URL to use all building/pushing image targets
-K8UP_GHCR_IMG ?= ghcr.io/k8up-io/k8up:$(IMG_TAG)
+K8UP_GHCR_IMG ?= oasistree/k8up:$(IMG_TAG)
 K8UP_QUAY_IMG ?= quay.io/k8up-io/k8up:$(IMG_TAG)
 
 # Operator Integration Test

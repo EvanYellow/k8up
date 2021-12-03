@@ -32,7 +32,7 @@ OPTIONS:
    --trimRestorePath                     If set, strips the value of --restoreDir from the lefts side of the remote restore path value (default: enabled) [$TRIM_RESTOREPATH]
    --resticBin value                     The path to the restic binary. (default: "/usr/local/bin/restic") [$RESTIC_BINARY]
    --resticRepository value              The restic repository to perform the action with [$RESTIC_REPOSITORY]
-   --resticOptions value                 Additional options to pass to restic in the format 'key=value,key2=value2' [$RESTIC_OPTIONS]
+   --resticOptions value                 Additional options to pass to restic in the format 'key=value,key2=value2' (default: "s3.region=SHANGHAI") [$RESTIC_OPTIONS]
    --keepLatest value                    While pruning, keep at the latest snapshot (default: 0) [$KEEP_LAST, $KEEP_LATEST]
    --keepHourly value                    While pruning, keep hourly snapshots (default: 0) [$KEEP_HOURLY]
    --keepDaily value                     While pruning, keep daily snapshots (default: 0) [$KEEP_DAILY]
