@@ -127,9 +127,11 @@ func (p *PruneExecutor) setupEnvVars(prune *k8upv1.Prune) []corev1.EnvVar {
 
 	if prune.Spec.Backend != nil {
 		for key, value := range prune.Spec.Backend.GetCredentialEnv() {
-			vars.SetEnvVarSource(key, value)
+			vars.SetString(key, value)
 		}
 		vars.SetString(cfg.ResticRepositoryEnvName, prune.Spec.Backend.String())
+		vars.SetString(cfg.ResticOptionsEnvName, prune.Spec.Backend.GetResticOptions())
+		vars.SetString(cfg.ResticPasswordEnvName, prune.Spec.Backend.GetResticPasswords())
 	}
 
 	vars.SetString("PROM_URL", cfg.Config.PromURL)

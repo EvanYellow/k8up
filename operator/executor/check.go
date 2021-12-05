@@ -80,9 +80,11 @@ func (c *CheckExecutor) setupEnvVars() []corev1.EnvVar {
 	if c.check != nil {
 		if c.check.Spec.Backend != nil {
 			for key, value := range c.check.Spec.Backend.GetCredentialEnv() {
-				vars.SetEnvVarSource(key, value)
+				vars.SetString(key, value)
 			}
 			vars.SetString(cfg.ResticRepositoryEnvName, c.check.Spec.Backend.String())
+			vars.SetString(cfg.ResticOptionsEnvName, c.check.Spec.Backend.GetResticOptions())
+			vars.SetString(cfg.ResticPasswordEnvName, c.check.Spec.Backend.GetResticPasswords())
 		}
 	}
 

@@ -17,9 +17,9 @@ var tests = map[string]struct {
 	"GivenAzureBackend_ThenExpectAzureContainer": {
 		givenBackend: &Backend{
 			Azure: &AzureSpec{
-				Container:            "container",
-				AccountNameSecretRef: newSecretRef("name"),
-				AccountKeySecretRef:  newSecretRef("key"),
+				Container: "container",
+				//AccountNameSecretRef: newSecretRef("name"),
+				//AccountKeySecretRef:  newSecretRef("key"),
 			},
 		},
 		expectedVars: map[string]*corev1.EnvVarSource{
@@ -31,10 +31,10 @@ var tests = map[string]struct {
 	"GivenB2Backend_ThenExpectB2BucketAndPath": {
 		givenBackend: &Backend{
 			B2: &B2Spec{
-				Bucket:              "bucket",
-				Path:                "path",
-				AccountKeySecretRef: newSecretRef("key"),
-				AccountIDSecretRef:  newSecretRef("id"),
+				Bucket: "bucket",
+				Path:   "path",
+				//AccountKeySecretRef: newSecretRef("key"),
+				//AccountIDSecretRef:  newSecretRef("id"),
 			},
 		},
 		expectedVars: map[string]*corev1.EnvVarSource{
@@ -55,9 +55,9 @@ var tests = map[string]struct {
 	"GivenGcsBackend_ThenExpectGcsBucket": {
 		givenBackend: &Backend{
 			GCS: &GCSSpec{
-				Bucket:               "bucket",
-				AccessTokenSecretRef: newSecretRef("token"),
-				ProjectIDSecretRef:   newSecretRef("id"),
+				Bucket: "bucket",
+				//AccessTokenSecretRef: newSecretRef("token"),
+				//ProjectIDSecretRef:   newSecretRef("id"),
 			},
 		},
 		expectedVars: map[string]*corev1.EnvVarSource{
@@ -69,10 +69,10 @@ var tests = map[string]struct {
 	"GivenS3Backend_ThenExpectS3EndpointURLWithBucket": {
 		givenBackend: &Backend{
 			S3: &S3Spec{
-				Bucket:                   "bucket",
-				Endpoint:                 "https://endpoint",
-				SecretAccessKeySecretRef: newSecretRef("secret"),
-				AccessKeyIDSecretRef:     newSecretRef("id"),
+				Bucket:   "bucket",
+				Endpoint: "https://endpoint",
+				//SecretAccessKeySecretRef: newSecretRef("secret"),
+				//AccessKeyIDSecretRef:     newSecretRef("id"),
 			},
 		},
 		expectedVars: map[string]*corev1.EnvVarSource{
@@ -94,9 +94,9 @@ var tests = map[string]struct {
 	"GivenRestBackend_ThenExpectRestUrl": {
 		givenBackend: &Backend{
 			Rest: &RestServerSpec{
-				URL:               "https://server",
-				PasswordSecretReg: newSecretRef("password"),
-				UserSecretRef:     newSecretRef("user"),
+				URL: "https://server",
+				//PasswordSecretReg: newSecretRef("password"),
+				//UserSecretRef:     newSecretRef("user"),
 			},
 		},
 		expectedVars: map[string]*corev1.EnvVarSource{

@@ -41,12 +41,12 @@ func newS3RestoreResource() *k8upv1.Restore {
 				S3: &k8upv1.S3Spec{
 					Endpoint: "http://localhost:9000",
 					Bucket:   "test",
-					AccessKeyIDSecretRef: &corev1.SecretKeySelector{
-						Key: "accessKey",
-					},
-					SecretAccessKeySecretRef: &corev1.SecretKeySelector{
-						Key: "secretKey",
-					},
+					//AccessKeyIDSecretRef: &corev1.SecretKeySelector{
+					//	Key: "accessKey",
+					//},
+					//SecretAccessKeySecretRef: &corev1.SecretKeySelector{
+					//	Key: "secretKey",
+					//},
 				},
 			},
 			RunnableSpec: k8upv1.RunnableSpec{
@@ -54,12 +54,12 @@ func newS3RestoreResource() *k8upv1.Restore {
 					S3: &k8upv1.S3Spec{
 						Endpoint: "http://localhost:9000",
 						Bucket:   "test-backend",
-						AccessKeyIDSecretRef: &corev1.SecretKeySelector{
-							Key: "accessKey-backend",
-						},
-						SecretAccessKeySecretRef: &corev1.SecretKeySelector{
-							Key: "secretKey-backend",
-						},
+						//AccessKeyIDSecretRef: &corev1.SecretKeySelector{
+						//	Key: "accessKey-backend",
+						//},
+						//SecretAccessKeySecretRef: &corev1.SecretKeySelector{
+						//	Key: "secretKey-backend",
+						//},
 					},
 				},
 			},

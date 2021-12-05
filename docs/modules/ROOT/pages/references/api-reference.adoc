@@ -152,7 +152,8 @@ Backend allows configuring several backend implementations. It is expected that 
 [cols="25a,75a", options="header"]
 |===
 | Field | Description
-| *`repoPasswordSecretRef`* __link:https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#secretkeyselector-v1-core[$$SecretKeySelector$$]__ | RepoPasswordSecretRef references a secret key to look up the restic repository password
+| *`repoPasswordSecretRef`* __string__ | RepoPasswordSecretRef references a secret key to look up the restic repository password
+| *`resticOptions`* __string__ | 
 | *`local`* __xref:{anchor_prefix}-github-com-k8up-io-k8up-api-v1-localspec[$$LocalSpec$$]__ | 
 | *`s3`* __xref:{anchor_prefix}-github-com-k8up-io-k8up-api-v1-s3spec[$$S3Spec$$]__ | 
 | *`gcs`* __xref:{anchor_prefix}-github-com-k8up-io-k8up-api-v1-gcsspec[$$GCSSpec$$]__ | 

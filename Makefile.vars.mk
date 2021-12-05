@@ -1,4 +1,4 @@
-IMG_TAG ?= latest
+IMG_TAG ?= v2.1.0-yh
 
 K8UP_MAIN_GO ?= cmd/k8up/main.go
 K8UP_GOOS ?= linux

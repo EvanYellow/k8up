@@ -175,9 +175,11 @@ func (r *RestoreExecutor) setupEnvVars(restore *k8upv1.Restore) []corev1.EnvVar 
 	}
 	if restore.Spec.Backend != nil {
 		for key, value := range restore.Spec.Backend.GetCredentialEnv() {
-			vars.SetEnvVarSource(key, value)
+			vars.SetString(key, value)
 		}
 		vars.SetString(cfg.ResticRepositoryEnvName, restore.Spec.Backend.String())
+		vars.SetString(cfg.ResticOptionsEnvName, restore.Spec.Backend.GetResticOptions())
+		vars.SetString(cfg.ResticPasswordEnvName, restore.Spec.Backend.GetResticPasswords())
 	}
 
 	err := vars.Merge(DefaultEnv(r.Obj.GetMetaObject().GetNamespace()))

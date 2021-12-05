@@ -1,6 +1,7 @@
 package executor
 
 import (
+	"fmt"
 	"path"
 
 	corev1 "k8s.io/api/core/v1"
@@ -112,9 +113,11 @@ func (b *BackupExecutor) setupEnvVars() []corev1.EnvVar {
 	if b.backup != nil {
 		if b.backup.Spec.Backend != nil {
 			for key, value := range b.backup.Spec.Backend.GetCredentialEnv() {
-				vars.SetEnvVarSource(key, value)
+				vars.SetString(key, value)
 			}
 			vars.SetString(cfg.ResticRepositoryEnvName, b.backup.Spec.Backend.String())
+			vars.SetString(cfg.ResticOptionsEnvName, b.backup.Spec.Backend.GetResticOptions())
+			vars.SetString(cfg.ResticPasswordEnvName, b.backup.Spec.Backend.GetResticPasswords())
 		}
 	}
 
@@ -128,5 +131,15 @@ func (b *BackupExecutor) setupEnvVars() []corev1.EnvVar {
 		b.Log.Error(err, "error while merging the environment variables", "name", b.Obj.GetMetaObject().GetName(), "namespace", b.Obj.GetMetaObject().GetNamespace())
 	}
 
-	return vars.Convert()
+	convertVars := vars.Convert()
+
+	for key := range convertVars {
+		if convertVars[key].ValueFrom != nil {
+			b.Log.Info(fmt.Sprintf("EnvVarConverterFrom: %s: %s", convertVars[key].Name, convertVars[key].ValueFrom.String()))
+		} else {
+			b.Log.Info(fmt.Sprintf("EnvVarConverter: %s: %s", convertVars[key].Name, convertVars[key].Value))
+		}
+	}
+
+	return convertVars
 }
